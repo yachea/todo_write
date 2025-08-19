@@ -23,6 +23,7 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "prettier/prettier": "warn",
+    "react/prop-types": "warn",
     "endOfLine": "auto",
     "@typescript-eslint/no-unused-vars": "warn"
   },

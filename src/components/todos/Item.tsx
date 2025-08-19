@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Item() {
+const Item = ({ todoitem, onDelete, onEdit }) => {
   return <div>Item</div>;
-}
+};
 
 export default Item;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IWriteType, WriteType } from '../../App';
+import { IoIosSend } from 'react-icons/io';
 
 type WriteProps = {
   setTodo: React.Dispatch<React.SetStateAction<(WriteType | IWriteType)[]>>;
@@ -11,12 +12,13 @@ const Write = ({ setTodo, handleTodoUpdate }: WriteProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
+
   const handleAdd = () => {
     if (title.trim()) {
       const newWrite: WriteType = {
         id: Date.now().toString(),
         title: title,
-        text: '',
+        completed: false,
       };
       handleTodoUpdate(newWrite);
       setTitle('');
@@ -26,10 +28,10 @@ const Write = ({ setTodo, handleTodoUpdate }: WriteProps) => {
   return (
     <div>
       <div>
-        <input type="textarea" value={title} onChange={handleChange} />
+        <input type="textarea" value={title} onChange={e => handleChange(e)} />
         <button onClick={handleAdd}>
           <div>
-            <img src="#" alt="전송" />
+            <IoIosSend />
           </div>
           보내기
         </button>

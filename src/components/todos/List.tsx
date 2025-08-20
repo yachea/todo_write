@@ -3,21 +3,28 @@ import { IWriteType, WriteType } from '../../App';
 import Item from './Item';
 
 type ListProps = {
-  todo: (WriteType | IWriteType)[];
+  todos: (WriteType | IWriteType)[];
   onDelete: (id: string) => void;
-  onEdit: (id: string, newTitle: string, newText: string) => void;
+  onEdit: (id: string, newTitle: string) => void;
+  onToggle: (id: string) => void;
 };
 
-const List = ({ todo, onDelete, onEdit }: ListProps) => {
+const List = ({ todos, onDelete, onEdit, onToggle }: ListProps) => {
   return (
     <div>
       <h2>목록</h2>
-      {todo.length === 0 ? (
+      {todos.length === 0 ? (
         <p>아이디어를 추가해주세요</p>
       ) : (
         <ul>
-          {todo.map(item => (
-            <Item key={item.id} todoitem={item} onDelete={onDelete} onEdit={onEdit} />
+          {todos.map(item => (
+            <Item
+              key={item.id}
+              todo={item}
+              onDelete={onDelete}
+              onEdit={onEdit}
+              onToggle={onToggle}
+            />
           ))}
         </ul>
       )}

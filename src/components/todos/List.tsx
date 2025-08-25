@@ -12,9 +12,9 @@ type ListProps = {
 const List = ({ todos, onDelete, onEdit, onToggle }: ListProps) => {
   return (
     <div>
-      <h2>목록</h2>
+      <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>List</h2>
       {todos.length === 0 ? (
-        <p>아이디어를 추가해주세요</p>
+        <p style={{ textAlign: 'center', color: '#bbb' }}>아이디어를 추가해주세요</p>
       ) : (
         <ul>
           {todos.map(item => (

@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
 import { WriteType } from '../../App';
 
+const EditButtonStyled: React.CSSProperties = {
+  padding: '3px 8px',
+  border: 'none',
+  backgroundColor: '#6f6dfa',
+  color: '#fff',
+  borderRadius: '5px',
+};
+const CancleButtonStyled: React.CSSProperties = {
+  padding: '3px 8px',
+  border: 'none',
+  backgroundColor: '#8c8c8f',
+  color: '#fff',
+  borderRadius: '5px',
+};
+
 type itemProps = {
   todo: WriteType;
   onDelete: (id: string) => void;
@@ -29,19 +44,36 @@ const Item = ({ todo, onDelete, onEdit, onToggle }: itemProps) => {
   };
 
   return (
-    <li>
+    <li
+      style={{
+        boxShadow: '0px 2px 8px 2px rgba(0, 0, 0, 0.1)',
+        padding: '10px 20px',
+        margin: '20px 20px',
+        borderRadius: '10px',
+        display: 'flex',
+        gap: '20px',
+      }}
+    >
       {isEdit ? (
         <>
           <input type="text" value={editTitle} onChange={e => setEditTitle(e.target.value)} />
-          <button onClick={handleEditSave}>저장</button>
-          <button onClick={handleEditCancel}>취소</button>
+          <button style={EditButtonStyled} onClick={handleEditSave}>
+            저장
+          </button>
+          <button style={CancleButtonStyled} onClick={handleEditCancel}>
+            취소
+          </button>
         </>
       ) : (
         <>
           <input type="checkbox" onChange={() => onToggle(todo.id)} checked={todo.completed} />
           <span>{todo.title}</span>
-          <button onClick={handleEdit}>수정</button>
-          <button onClick={() => onDelete(todo.id)}>삭제</button>
+          <button style={EditButtonStyled} onClick={handleEdit}>
+            수정
+          </button>
+          <button style={CancleButtonStyled} onClick={() => onDelete(todo.id)}>
+            삭제
+          </button>
         </>
       )}
     </li>
